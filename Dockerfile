@@ -26,8 +26,11 @@ RUN wget https://github.com/alibaba/nacos/releases/download/${NACOS_VERSION}/nac
     && tar -xzvf /home/nacos-server-${NACOS_VERSION}.tar.gz -C /home \
     && rm -rf /home/nacos-server-${NACOS_VERSION}.tar.gz /home/nacos/bin/* /home/nacos/conf/*.properties /home/nacos/conf/*.example /home/nacos/conf/nacos-mysql.sql
 
+RUN wget https://repo1.maven.org/maven2/mysql/mysql-connector-java/8.0.20/mysql-connector-java-8.0.20.jar -P /home/nacos/plugins/mysql
+
 ADD bin/docker-startup.sh bin/docker-startup.sh
 ADD conf/application.properties conf/application.properties
+ADD conf/schema-mysql.sql conf/schema-mysql.sql
 ADD init.d/custom.properties init.d/custom.properties
 
 # set startup log dir
