@@ -28,6 +28,7 @@ RUN wget https://github.com/alibaba/nacos/releases/download/${NACOS_VERSION}/nac
 
 RUN mkdir -p /home/nacos/plugins/mysql \
     && wget https://repo1.maven.org/maven2/mysql/mysql-connector-java/8.0.20/mysql-connector-java-8.0.20.jar -P /home/nacos/plugins/mysql
+    && ls -l /home/nacos/plugins/mysql
 
 ADD bin/docker-startup.sh bin/docker-startup.sh
 ADD conf/application.properties conf/application.properties
